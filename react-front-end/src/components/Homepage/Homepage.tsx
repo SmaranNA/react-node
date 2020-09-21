@@ -34,8 +34,8 @@ export const Homepage = (props:any) => {
 
   return (<div className="home">
     {/* {JSON.stringify(currentArticles)} */}
-    {currentArticles && currentArticles.map((article:Article) => (
-        <Article source={article.source}  title={article.title} author={article.author} url={article.url} urlToImage={article.urlToImage} publishedAt={article.publishedAt} content={article.content}/>
+    {currentArticles && currentArticles.map((article:Article,index:number) => (
+        <Article key={index} source={article.source}  title={article.title} author={article.author} url={article.url} urlToImage={article.urlToImage} publishedAt={article.publishedAt} content={article.content}/>
     ))}
     </div>);
 };
