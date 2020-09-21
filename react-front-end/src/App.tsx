@@ -24,8 +24,7 @@ function App() {
     <div className="App">
       <nav>
         <a href="/">Home</a> |
-        <a href="/search">Search</a> |
-        <a href="/article/1">Query</a>
+        <a href="/search">Search</a>
       </nav>
       {routeResult || <NotFoundPage />}
     </div>

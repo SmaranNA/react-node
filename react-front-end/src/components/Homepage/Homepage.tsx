@@ -1,14 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import './Homepage.css';
 import { Article } from '../Article/Article';
 
-let source = {
-  id: null,
-  name: 'Cointelegraph'
-};
-export const Homepage = ({ }) => <div>
-<Article title="Bitcoin price volatility expected as 47% of BTC options expire next Friday" author="Cointelegraph By Marcel Pechman" url="https://cointelegraph.com/news/bitcoin-price-volatility-expected-as-47-of-btc-options-expire-next-friday" urlToImage="https://s3.cointelegraph.com/storage/uploads/view/1bbb929925f2481af8382bfbb5ae9c43.jpg" publishedAt="2020-09-20T01:15:00Z" content="The open interest on Bitcoin (BTC) options is just 5% short of their all-time high, but nearly half of this amount will be terminated in the upcoming September expiry. \r\nAlthough the current $1.9 bil… [+4162 chars]" source={source} />
-<Article title="Bitcoin price volatility expected as 47% of BTC options expire next Friday" author="Cointelegraph By Marcel Pechman" url="https://cointelegraph.com/news/bitcoin-price-volatility-expected-as-47-of-btc-options-expire-next-friday" urlToImage="https://s3.cointelegraph.com/storage/uploads/view/1bbb929925f2481af8382bfbb5ae9c43.jpg" publishedAt="2020-09-20T01:15:00Z" content="The open interest on Bitcoin (BTC) options is just 5% short of their all-time high, but nearly half of this amount will be terminated in the upcoming September expiry. \r\nAlthough the current $1.9 bil… [+4162 chars]" source={source} />
-<Article title="Bitcoin price volatility expected as 47% of BTC options expire next Friday" author="Cointelegraph By Marcel Pechman" url="https://cointelegraph.com/news/bitcoin-price-volatility-expected-as-47-of-btc-options-expire-next-friday" urlToImage="https://s3.cointelegraph.com/storage/uploads/view/1bbb929925f2481af8382bfbb5ae9c43.jpg" publishedAt="2020-09-20T01:15:00Z" content="The open interest on Bitcoin (BTC) options is just 5% short of their all-time high, but nearly half of this amount will be terminated in the upcoming September expiry. \r\nAlthough the current $1.9 bil… [+4162 chars]" source={source} />
-</div>
+export const Homepage = (props:any) => {
 
+  interface Article {
+    title: string,
+    source: any,
+    author: string,
+    url: string,
+    urlToImage: string,
+    publishedAt: string,
+    content: string
+  };
+
+  const [currentArticles, setCurrentArticles] = useState([]);
+
+  const getArticles = () => {
+    axios.get<Article[]>('http://localhost:3000/api/news/')
+      .then((res:any) => {
+        setCurrentArticles(res.data.articles);
+      })
+      .catch((e:any) => {
+        console.log(e);
+      });
+  };
+
+  useEffect(() => {
+    getArticles();
+  }, [props.articles]);
+
+  return (<div>
+    {/* {JSON.stringify(currentArticles)} */}
+    {currentArticles && currentArticles.map((article:Article) => (
+        <Article source={article.source}  title={article.title} author={article.author} url={article.url} urlToImage={article.urlToImage} publishedAt={article.publishedAt} content={article.content}/>
+    ))}
+    </div>);
+};

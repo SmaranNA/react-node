@@ -1,7 +1,6 @@
 import { Query } from '@testing-library/dom';
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import { useDispatch, useSelector } from 'react-redux';
 
 import './Article.css';
 
@@ -13,11 +12,14 @@ type Article = {
   urlToImage: string,
   publishedAt: string,
   content: string
-  id? : Query
+  id?: Query
 }
 
 function nl2br(str: string){
-  return str.replace(/(?:\\r\\n|\\r|\\n)/g, '<br/>');
+  if(str)
+    return str.replace(/(?:\\r\\n|\\r|\\n)/g, '<br/>');
+  else
+    return '';
 }
 
 export const Article = ({ title,author,url,urlToImage,publishedAt,content,source }: Article) => <article>
