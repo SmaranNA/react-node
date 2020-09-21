@@ -1,4 +1,3 @@
-import { Query } from '@testing-library/dom';
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
 
@@ -12,7 +11,6 @@ type Article = {
   urlToImage: string,
   publishedAt: string,
   content: string
-  id?: Query
 }
 
 function nl2br(str: string){
@@ -23,7 +21,6 @@ function nl2br(str: string){
 }
 
 export const Article = ({ title,author,url,urlToImage,publishedAt,content,source }: Article) => 
-<a href="/article/{id}">
 <article>
     <h3>{title} by <i className="source">{source.name}</i></h3>
     <p className="grey"> Author: {author}<span className="publishedAt">Published On: {publishedAt}</span></p>
@@ -31,4 +28,3 @@ export const Article = ({ title,author,url,urlToImage,publishedAt,content,source
     <img src={urlToImage} alt="Article image" className="responsive"/>
     <p> <a href={url} target="_blank" rel="noopener noreferrer">More info</a></p>
 </article>
-</a>

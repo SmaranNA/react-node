@@ -33,7 +33,6 @@ export const Homepage = (props:any) => {
   }, [props.articles]);
 
   return (<div className="home">
-    {/* {JSON.stringify(currentArticles)} */}
     {currentArticles && currentArticles.map((article:Article,index:number) => (
         <Article key={index} source={article.source}  title={article.title} author={article.author} url={article.url} urlToImage={article.urlToImage} publishedAt={article.publishedAt} content={article.content}/>
     ))}
