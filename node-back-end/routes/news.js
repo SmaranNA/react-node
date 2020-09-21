@@ -33,6 +33,7 @@ router.get('/search', async function(req,res) {
     res.status(404).json({err: err.message});
   }
   console.log('Results Length: ' + results.totalResults);
+  console.log('Query string: ' + req.query.q);
   res.status(200).json(results);
 });
 

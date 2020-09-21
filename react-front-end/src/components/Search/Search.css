@@ -1,0 +1,23 @@
+.search {
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+}
+.searchTerm {
+    width: 80%;
+    margin-right: 10px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+@media(max-width: 580px) {
+    .searchTerm {
+        width: 60%;
+    }
+}

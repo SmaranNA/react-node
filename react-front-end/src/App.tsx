@@ -22,9 +22,9 @@ function App() {
   const routeResult = useRoutes(routes);
   return (
     <div className="App">
-      <nav>
-        <a href="/">Home</a> |
-        <a href="/search">Search</a>
+      <nav className="navBar">
+        <a className="links" href="/">Home</a>
+        <a className="links" href="/search">Search</a>
       </nav>
       {routeResult || <NotFoundPage />}
     </div>

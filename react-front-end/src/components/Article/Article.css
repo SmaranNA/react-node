@@ -1,8 +1,23 @@
-.responsive {
-    width: 90%;
-    height: auto;
-}
-
 .source {
     color: blueviolet;
+}
+article {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    border: 2px solid grey;
+    margin: 0px 5px 10px 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.grey {
+    color: grey;
+    opacity: 70%;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.publishedAt {
+    padding-left: 10%;
 }
